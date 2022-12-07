@@ -28,9 +28,16 @@
   "targets": [
     {
       "name": "Development",
-      "remoteURL": "http://localhost:3000/",
+      "remoteURL": "http://localhost:3000",
       "access": "local",
       "targetType": "wappler"
+    },
+    {
+      "name": "Prod",
+      "remoteURL": "https://lark-17956.web.app",
+      "targetType": "firebase",
+      "usage": "production",
+      "firebaseProjectID": "lark-17956"
     }
   ],
   "activeTarget": "Development",

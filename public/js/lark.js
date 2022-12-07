@@ -1,48 +1,31 @@
 // JavaScript Document
 
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+$(document).ready(function () {
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+    // get url parameter code
+    var get_url_parameter = function get_url_parameter(s_param) {
+        var s_page_url = window.location.search.substring(1),
+            s_url_variable = s_page_url.split('&'),
+            s_parameter_name,
+            i;
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        for (i = 0; i < s_url_variable.length; i++) {
+            s_parameter_name = s_url_variable[i].split('=');
+
+            if (s_parameter_name[0] === s_param) {
+                return s_parameter_name[1] === undefined ? true : decodeURIComponent(s_parameter_name[1]);
+            }
         }
-    }
-    return false;
-};
-
-
-
-function accessToken() {
-
-
-    var myHeaders = new Headers();
-
-
-    myHeaders.append("Cookie", "QXV0aHpDb250ZXh0=6abe2024960e482790f93d6c7d5ba3c9; passport_web_did=7156048508934455302; swp_csrf_token=252653f4-2861-4ba6-b421-f4d8f9dad309; t_beda37=62d66ad740fb32e1eb071d9ab8a4d09e0810383a6f7568873814870911e1659a");
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow'
+        return false;
     };
 
-    fetch("https://open.larksuite.com/open-apis/auth/v3/tenant_access_token/internal?app_id=cli_a2f99415c7f85009&app_secret=9jTzhW1pMKT3SoWBXIhwWhfj5PaoeEo4", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
+    var code = get_url_parameter('code');
 
-var code = getUrlParameter('code');
-
-accessToken()
-
-console.log(code)
+    // call lark api to fetch logged in user info
+    dmx.parse("get_user_info.load({code: '" + code + "'})");
 
 
 
+
+
+});

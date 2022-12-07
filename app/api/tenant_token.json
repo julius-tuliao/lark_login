@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "code"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "",
+      "module": "core",
+      "action": "condition",
+      "options": {
+        "if": "{{$_GET.code.length()>4}}",
+        "then": {
+          "steps": [
+            {
+              "name": "tenant",
+              "module": "lark",
+              "action": "get_tenant_access_token",
+              "options": {
+                "code": "{{$_GET.code}}"
+              },
+              "output": false
+            },
+            {
+              "name": "avatar",
+              "module": "core",
+              "action": "setvalue",
+              "options": {
+                "key": "avatr",
+                "value": "{{tenant.data.avatar_thumb}}"
+              },
+              "meta": [],
+              "outputType": "text",
+              "output": true
+            },
+            {
+              "name": "user_copy",
+              "module": "core",
+              "action": "setvalue",
+              "options": {
+                "key": "user",
+                "value": "{{tenant.data.name}}"
+              },
+              "meta": [],
+              "outputType": "text",
+              "output": true
+            }
+          ]
+        }
+      },
+      "outputType": "boolean"
+    }
+  }
+}

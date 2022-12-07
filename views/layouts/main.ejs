@@ -6,29 +6,41 @@
   <script src="/dmxAppConnect/dmxAppConnect.js"></script>
   <meta charset="UTF-8">
   <title>Lark Login</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/css/style.css" />
   <script src="/js/lark.js"></script>
   <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+  <script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js" defer></script>
 </head>
 
 <body is="dmx-app" id="main">
+
+
+  <dmx-serverconnect id="test"></dmx-serverconnect>
+
+  <dmx-serverconnect id="get_user_info" url="/api/tenant_token" noload></dmx-serverconnect>
   <div class="container top-margin">
-    <h3 class="text-center mb-4">SMS V3</h3>
-    <div class="row">
 
-      <div class="col-xs-12">
+    <h3 class="text-center mb-4">Lark Login Test</h3>
+    <h5> Login User </h5>
+    <img id="avatar" dmx-bind:src="get_user_info.data.avatar">
+    <p id="user_info" dmx-bind:src="get_user_info.data.user_copy">{{get_user_info.data.user_copy}}</p>
+    <div id="conditional1" is="dmx-if" dmx-bind:condition="get_user_info.data">
+      <div class="row">
 
-        <div class="row">
-          <div class="col-md-12 text-center align-self-center">
-            <a class="btn btn-lg" href="https://open.larksuite.com/open-apis/authen/v1/user_auth_page_beta?app_id=cli_a1688a2b5778d00a&redirect_uri=http%3A%2F%2F192.168.101.117%3A3000%2F&state=test" id="login" class="btn btn-success"><i class="fa fa-unlock"></i> Login with Lark</a>
+        <div class="col-xs-12">
 
+          <div class="row">
+            <div class="col-md-12 text-center align-self-center">
+              <a class="btn btn-lg" href="https://open.larksuite.com/open-apis/authen/v1/user_auth_page_beta?app_id=cli_a1688a2b5778d00a&redirect_uri=http%3A%2F%2F192.168.101.117%3A3000%2F&state=test" id="login" class="btn btn-success"><i class="fa fa-unlock"></i> Login with Lark</a>
+
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>

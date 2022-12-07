@@ -1,0 +1,22 @@
+{
+  type: 'lark api',
+  module : 'lark',
+  action : 'get_tenant_access_token',
+  groupTitle : 'My Modules',
+  groupIcon : 'fas fa-lg fa-project-diagram comp-images',
+  title : 'Tenant Access Token',
+  icon : 'fas fa-lg fa-file-alt comp-images',
+  dataPickObject: true,
+  properties : [
+    {
+      group: 'Web3',
+      variables: [
+        { name: 'name', optionName: 'name', title: 'Name', type: 'text', required: true, defaultValue: 'Key'},
+         { name: 'code', optionName: 'code', title: 'code', type: 'text', required: true, defaultValue: '', serverDataBindings: true},
+        { name: 'output', optionName: 'output', title: 'Output', type: 'text', defaultValue: false }
+      ]
+    }
+  ]
+
+}
+ 
