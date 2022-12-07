@@ -3,14 +3,16 @@
 var axios = require('axios');
 
 require('dotenv').config();
-// get tenant access token
+
 exports.get_tenant_access_token = async function (code) {
 
-    console.log("hello")
+
+    var tenant_token_api = 'https://open.larksuite.com/open-apis/auth/v3/tenant_access_token/internal'
+    var user_info_api = 'https://open.larksuite.com/open-apis/authen/v1/access_token'
 
     var code = this.parse(code.code);
 
-    console.log(code)
+    // get tenant access token
     var data = JSON.stringify({
         "app_id": process.env.APP_ID,
         "app_secret": process.env.APP_SECRET
@@ -18,7 +20,7 @@ exports.get_tenant_access_token = async function (code) {
 
     var config = {
         method: 'POST',
-        url: 'https://open.larksuite.com/open-apis/auth/v3/tenant_access_token/internal',
+        url: tenant_token_api,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -26,8 +28,7 @@ exports.get_tenant_access_token = async function (code) {
     };
 
     var response = await axios(config)
-
-    console.log(response.data.tenant_access_token)
+    // End tenant access token
 
     // Get Login user Identity
     var data = JSON.stringify({
@@ -37,7 +38,7 @@ exports.get_tenant_access_token = async function (code) {
 
     var config = {
         method: 'POST',
-        url: 'https://open.larksuite.com/open-apis/authen/v1/access_token',
+        url: user_info_api,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + response.data.tenant_access_token
@@ -54,5 +55,5 @@ exports.get_tenant_access_token = async function (code) {
         .catch(function (error) {
             console.log(error);
         });
-    return user_info;
+    // End Login user Identity
 }
