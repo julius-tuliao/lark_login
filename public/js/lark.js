@@ -21,10 +21,11 @@ $(document).ready(function () {
 
     var code = get_url_parameter('code');
 
-    // call lark api to fetch logged in user info
-    dmx.parse("get_user_info.load({code: '" + code + "'})");
+    if (code != false) {
+        // call lark api to fetch logged in user info
+        dmx.parse("get_user_info.load({code: '" + code + "'})");
 
-
+    }
 
 
 

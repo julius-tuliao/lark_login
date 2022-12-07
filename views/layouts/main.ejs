@@ -28,19 +28,18 @@
     <h5> Login User </h5>
     <img id="avatar" dmx-bind:src="get_user_info.data.avatar">
     <p id="user_info" dmx-bind:src="get_user_info.data.user_copy">{{get_user_info.data.user_copy}}</p>
-    <div id="conditional1" is="dmx-if" dmx-bind:condition="get_user_info.data">
-      <div class="row">
 
-        <div class="col-xs-12">
+    <div class="row">
 
-          <div class="row">
-            <div class="col-md-12 text-center align-self-center">
-              <a class="btn btn-lg" href="https://open.larksuite.com/open-apis/authen/v1/user_auth_page_beta?app_id=cli_a1688a2b5778d00a&redirect_uri=http%3A%2F%2F192.168.101.117%3A3000%2F&state=test" id="login" class="btn btn-success"><i class="fa fa-unlock"></i> Login with Lark</a>
+      <div class="col-xs-12">
 
-            </div>
+        <div class="row">
+          <div class="col-md-12 text-center align-self-center">
+            <a class="btn btn-lg" href="https://open.larksuite.com/open-apis/authen/v1/user_auth_page_beta?app_id=cli_a1688a2b5778d00a&redirect_uri=http%3A%2F%2F192.168.101.117%3A3000%2F&state=test" id="login" class="btn btn-success"><i class="fa fa-unlock"></i> Login with Lark</a>
+
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
