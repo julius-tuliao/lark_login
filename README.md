@@ -8,7 +8,10 @@ used lark sdk to login user in a webapp
 
 3. change app_cli url for button into your apps' app_id 
 
-4. build a .env file in root directory with this format 
+4. assign ark users who can access your app
+
+5. build a .env file in root directory with this format 
+
 
 # .env file
 APP_ID="app_id" 
